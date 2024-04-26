@@ -1,4 +1,4 @@
-# Recipes App Documentation
+# Recipes App
 
 ## Overview
 
