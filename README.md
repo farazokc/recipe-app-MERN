@@ -58,9 +58,10 @@ The Recipes app is a web application built on the MERN (MongoDB, Express.js, Rea
 3. Configure environment variables:
    - Create a `.env` file in the `server` directory and set the following variables:
      ```plaintext
-     PORT=5000
-     MONGODB_URI=your_mongodb_connection_string
-     JWT_SECRET=your_jwt_secret_key
+     USER=your_mongodbAtlas_username
+     DATABASE=your_mongodbAtlas_db_name
+     PASSWORD=your_mongodbAtlas_db_password
+     SECRET=jwt_secret_key
      ```
 
 4. Start the development server:
