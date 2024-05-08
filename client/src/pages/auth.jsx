@@ -23,15 +23,22 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    try{
+    try {
       const response = await axios.post("http://localhost:3001/auth/login", {
         username,
         password,
       });
 
-      setCookies("access_token", response.data.token);
-      window.localStorage.setItem("userID", response.data.userID);
-      navigate("/");
+      // console.log('response.data', response.data);
+
+      if (response.data.message) {
+        alert(response.data.message);
+        setPassword('');
+      } else {
+        setCookies("access_token", response.data.token);
+        window.localStorage.setItem("userID", response.data.userID);
+        navigate("/");
+      }
     } catch (err) {
       console.error(err);
     }
@@ -93,10 +100,10 @@ const Form = ({
         <h2>{label}</h2>
 
         <div className="form-group">
-          <label htmlFor={label+'-username'}>Username: </label>
+          <label htmlFor={label + '-username'}>Username: </label>
           <input
             type="text"
-            id={label+'-username'}
+            id={label + '-username'}
             value={username}
             onChange={(e) => {
               setUsername(e.target.value);
@@ -105,10 +112,10 @@ const Form = ({
         </div>
 
         <div className="form-group">
-          <label htmlFor={label+'-password'}>Password: </label>
+          <label htmlFor={label + '-password'}>Password: </label>
           <input
             type="password"
-            id={label+'-password'}
+            id={label + '-password'}
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
